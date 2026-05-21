@@ -1,10 +1,10 @@
-import { motion } from 'framer-motion';
+import { motion } from "framer-motion";
 
-export const GlassCard = ({ children, className = '', ...props }) => (
+export const GlassCard = ({ children, className = "", ...props }) => (
   <motion.div
     whileHover={{ y: -4 }}
-    transition={{ type: 'spring', stiffness: 220, damping: 18 }}
-    className={`glass-card neo-border rounded-3xl p-6 ${className}`}
+    transition={{ type: "spring", stiffness: 220, damping: 18 }}
+    className={`glass-card neo-border rounded-3xl p-4 sm:p-6 ${className}`}
     {...props}
   >
     {children}
