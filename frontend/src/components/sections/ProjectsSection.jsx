@@ -46,14 +46,14 @@ export const ProjectsSection = () => {
                 key={filter}
                 type="button"
                 onClick={() => setActiveFilter(filter)}
-                className={`rounded-full border px-4 py-2 text-sm font-semibold transition focus-ring ${activeFilter === filter ? "border-cyan-400/40 bg-cyan-400/15 text-cyan-200" : "control-surface"}`}
+                className={`rounded-full border px-4 py-2 text-sm font-semibold transition focus-ring ${activeFilter === filter ? "border-[var(--primary)] bg-[var(--primary)] text-white" : "control-surface"}`}
               >
                 {filter}
               </button>
             ))}
           </div>
           <label className="glass-card flex items-center gap-3 rounded-full px-4 py-3 lg:min-w-96">
-            <Search size={18} className="text-cyan-300" />
+            <Search size={18} className="text-[var(--primary)]" />
             <input
               value={search}
               onChange={(event) => setSearch(event.target.value)}
@@ -74,11 +74,11 @@ export const ProjectsSection = () => {
             >
               <GlassCard className="group h-full overflow-hidden">
                 <div className="flex items-center justify-between">
-                  <span className="rounded-full bg-cyan-400/15 px-3 py-1 text-xs font-bold uppercase tracking-[0.2em] text-cyan-200">
+                  <span className="rounded-full bg-[color-mix(in_srgb,var(--primary)_12%,transparent)] px-3 py-1 text-xs font-bold uppercase tracking-[0.2em] text-[var(--primary)]">
                     {project.category}
                   </span>
                   {project.featured ? (
-                    <span className="text-xs font-semibold text-emerald-300">
+                    <span className="text-xs font-semibold text-[var(--primary)]">
                       Featured
                     </span>
                   ) : null}
@@ -102,13 +102,13 @@ export const ProjectsSection = () => {
                 <div className="mt-6 flex items-center gap-3">
                   <a
                     href={project.liveUrl}
-                    className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-cyan-400 to-blue-500 px-4 py-2 text-sm font-bold text-white transition hover:scale-105 focus-ring"
+                    className="control-surface inline-flex items-center gap-2 rounded-full px-4 py-2 text-sm font-bold transition hover:scale-105 focus-ring"
                   >
                     Live Demo <ArrowUpRight size={16} />
                   </a>
                   <a
                     href={project.githubUrl}
-                    className="inline-flex items-center gap-2 rounded-full border border-[var(--border)] px-4 py-2 text-sm font-bold transition hover:bg-white/10 focus-ring"
+                    className="control-surface inline-flex items-center gap-2 rounded-full px-4 py-2 text-sm font-bold transition focus-ring"
                   >
                     <Github size={16} /> GitHub
                   </a>

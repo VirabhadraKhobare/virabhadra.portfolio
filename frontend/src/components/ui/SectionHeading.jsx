@@ -16,7 +16,7 @@ export const SectionHeading = ({
     transition={{ duration: 0.55 }}
   >
     {eyebrow ? (
-      <p className="text-xs font-bold uppercase tracking-[0.35em] text-[var(--text-soft)]">
+      <p className="text-xs font-bold uppercase tracking-[0.35em] text-[var(--primary)]">
         {eyebrow}
       </p>
     ) : null}

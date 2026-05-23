@@ -59,7 +59,7 @@ export const AboutSection = () => (
               transition={{ delay: index * 0.08, duration: 0.5 }}
             >
               <GlassCard className="h-full">
-                <p className="text-xs font-bold uppercase tracking-[0.28em] text-cyan-300">
+                <p className="text-xs font-bold uppercase tracking-[0.28em] text-[var(--primary)]">
                   Education
                 </p>
                 <h3 className="mt-3 font-display text-xl font-bold">
