@@ -1,31 +1,37 @@
-import nodemailer from 'nodemailer';
-import { env } from '../config/env.js';
+import nodemailer from "nodemailer";
+import "../config/loadEnv.js";
 
-const hasSmtp = env.smtpHost && env.smtpUser && env.smtpPass;
+const smtpHost = process.env.SMTP_HOST || "";
+const smtpPort = Number(process.env.SMTP_PORT) || 587;
+const smtpUser = process.env.SMTP_USER || "";
+const smtpPass = process.env.SMTP_PASS || "";
+const smtpFrom = process.env.SMTP_FROM || "noreply@virabhadraportfolio.com";
+
+const hasSmtp = smtpHost && smtpUser && smtpPass;
 
 const transporter = hasSmtp
   ? nodemailer.createTransport({
-      host: env.smtpHost,
-      port: env.smtpPort,
-      secure: env.smtpPort === 465,
+      host: smtpHost,
+      port: smtpPort,
+      secure: smtpPort === 465,
       auth: {
-        user: env.smtpUser,
-        pass: env.smtpPass
-      }
+        user: smtpUser,
+        pass: smtpPass,
+      },
     })
   : null;
 
 export const sendMail = async ({ to, subject, html, text }) => {
   if (!transporter) {
-    console.log('SMTP not configured. Email payload:', { to, subject, text });
+    console.log("SMTP not configured. Email payload:", { to, subject, text });
     return { skipped: true };
   }
 
   return transporter.sendMail({
-    from: env.smtpFrom,
+    from: smtpFrom,
     to,
     subject,
     html,
-    text
+    text,
   });
 };

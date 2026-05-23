@@ -52,6 +52,15 @@ export const Navbar = () => {
               {item.label}
             </a>
           ))}
+          <a
+            href="/Virabhadra_Khobare_FullStack_Resume.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
+            download
+            className="inline-flex items-center gap-2 rounded-full border border-[var(--border)] px-4 py-2 text-sm font-semibold text-[var(--text)] transition hover:bg-white/10 focus-ring"
+          >
+            Resume
+          </a>
           <NavLink
             to="/admin/login"
             className="inline-flex items-center gap-2 rounded-full border border-[var(--border)] px-4 py-2 text-sm font-semibold text-[var(--text)] transition hover:bg-white/10 focus-ring"
@@ -105,6 +114,19 @@ export const Navbar = () => {
                   <ArrowUpRight size={16} className="text-[var(--muted)]" />
                 </a>
               ))}
+            </div>
+
+            <div className="mt-3 flex gap-3">
+              <a
+                href="/Virabhadra_Khobare_FullStack_Resume.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+                download
+                onClick={() => setIsMenuOpen(false)}
+                className="flex-1 items-center justify-center rounded-full border border-[var(--border)] bg-[var(--panel)] px-4 py-3 text-center text-sm font-semibold text-[var(--text)] transition hover:bg-white/10 focus-ring"
+              >
+                Download Resume
+              </a>
             </div>
 
             <div className="flex items-center gap-3 rounded-3xl border border-[var(--border)] bg-[var(--panel-strong)] p-3">

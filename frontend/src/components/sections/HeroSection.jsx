@@ -75,7 +75,7 @@ export const HeroSection = () => {
               <Sparkles size={14} />
               Premium Portfolio 2026
             </div>
-            <h1 className="mt-6 max-w-4xl font-display text-4xl font-black tracking-tight sm:text-5xl md:text-5xl lg:text-6xl xl:text-[3.6rem]">
+            <h1 className="mt-6 max-w-4xl font-display text-4xl font-black tracking-tight sm:text-5xl md:text-5xl lg:text-6xl xl:text-[3rem]">
               <span className="block text-[var(--text)]">
                 Virbhadra Khobare
               </span>
@@ -126,13 +126,23 @@ export const HeroSection = () => {
             ))}
           </div>
 
-          <div className="mt-9 grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
+          <div className="mt-9 grid gap-4 sm:grid-cols-2 xl:grid-cols-2">
             {heroStats.map((stat) => (
-              <GlassCard key={stat.label} className="p-4 sm:p-5">
-                <p className="text-2xl font-black text-[var(--text)] sm:text-3xl lg:text-[2rem]">
-                  {stat.value}
-                </p>
-                <p className="mt-1 text-sm text-[var(--muted)]">{stat.label}</p>
+              <GlassCard
+                key={stat.label}
+                className="relative overflow-hidden px-5 py-4 sm:px-6 sm:py-4"
+              >
+                <div className="absolute inset-x-0 top-0 h-[2px] bg-gradient-to-r from-cyan-400 via-blue-500 to-fuchsia-500 opacity-90" />
+                <div className="flex min-h-[96px] flex-col justify-between gap-2.5">
+                  <div>
+                    <p className="text-[0.64rem] font-bold uppercase tracking-[0.36em] text-cyan-200/80">
+                      {stat.label}
+                    </p>
+                    <p className="mt-2.5 text-[1.05rem] font-black leading-[1.08] tracking-tight text-[var(--text)] sm:text-[1.1rem] lg:text-[1.15rem]">
+                      {stat.value}
+                    </p>
+                  </div>
+                </div>
               </GlassCard>
             ))}
           </div>

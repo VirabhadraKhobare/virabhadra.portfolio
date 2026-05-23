@@ -30,10 +30,10 @@ export const Footer = () => {
             <a href="https://github.com/VirbhadraKhobare" className="transition hover:text-[var(--text)] focus-ring" aria-label="GitHub">
               <Github size={18} />
             </a>
-            <a href="https://linkedin.com" className="transition hover:text-[var(--text)] focus-ring" aria-label="LinkedIn">
+            <a href="https://linkedin.com/virabhadrakhobare" className="transition hover:text-[var(--text)] focus-ring" aria-label="LinkedIn">
               <Linkedin size={18} />
             </a>
-            <a href="mailto:virbhadra.khobare@example.com" className="transition hover:text-[var(--text)] focus-ring" aria-label="Email">
+            <a href="mailto:virbhadrakhobare111@gmail.com" className="transition hover:text-[var(--text)] focus-ring" aria-label="Email">
               <Mail size={18} />
             </a>
           </div>

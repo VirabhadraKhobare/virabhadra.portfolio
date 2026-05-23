@@ -1,29 +1,33 @@
-import bcrypt from 'bcryptjs';
-import { connectDatabase } from '../config/db.js';
-import { env } from '../config/env.js';
-import { User } from '../models/User.js';
+import bcrypt from "bcryptjs";
+import "../config/loadEnv.js";
+import { connectDatabase } from "../config/db.js";
+import { User } from "../models/User.js";
+
+const adminSeedEmail =
+  process.env.ADMIN_EMAIL || "admin@virabhadraportfolio.com";
+const adminSeedPassword = process.env.ADMIN_PASSWORD || "Admin@12345";
 
 const seed = async () => {
   await connectDatabase();
 
-  const passwordHash = await bcrypt.hash(env.adminSeedPassword, 12);
+  const passwordHash = await bcrypt.hash(adminSeedPassword, 12);
 
   await User.findOneAndUpdate(
-    { email: env.adminSeedEmail },
+    { email: adminSeedEmail },
     {
-      name: 'Virbhadra Khobare',
-      email: env.adminSeedEmail,
+      name: "Virbhadra Khobare",
+      email: adminSeedEmail,
       passwordHash,
-      role: 'admin',
-      title: 'Full Stack Developer | AI/ML Enthusiast | Software Engineer',
-      githubUrl: 'https://github.com/VirbhadraKhobare',
-      leetcodeUrl: 'https://leetcode.com/',
-      codeforcesUrl: 'https://codeforces.com/'
+      role: "admin",
+      title: "Full Stack Developer | AI/ML Enthusiast | Software Engineer",
+      githubUrl: "https://github.com/VirbhadraKhobare",
+      leetcodeUrl: "https://leetcode.com/virabhadra07",
+      codeforcesUrl: "https://codeforces.com/",
     },
-    { upsert: true, new: true }
+    { upsert: true, new: true },
   );
 
-  console.log('Admin user seeded:', env.adminSeedEmail);
+  console.log("Admin user seeded:", adminSeedEmail);
   process.exit(0);
 };
 
