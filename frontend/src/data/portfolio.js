@@ -82,9 +82,9 @@ export const projectData = [
     description:
       "Developed a full-stack Hospital Management System using MERN stack for patient registration, appointment booking, billing, and medical record management.",
     tech: ["React.js", "Node.js", "Express.js", "MongoDB", "JWT", "REST API"],
-    liveUrl: null,
-    githubUrl: null,
-    featured: false,
+    liveUrl: "https://smart-hospital-management-nu.vercel.app/",
+    githubUrl: "https://github.com/VirabhadraKhobare/smart-hospital-management",
+    featured: true,
     impact: [
       "Improved system security (JWT + RBAC) — 40%",
       "Improved data retrieval performance by 35%",
@@ -93,7 +93,7 @@ export const projectData = [
   },
   {
     title: "Smart Agro AI Advisor",
-    category: "Full Stack · MERN (AI-powered)",
+    category: "Full Stack · MERN + AI",
     description:
       "Developed an AI-powered crop advisory platform using React.js, Node.js, MongoDB, and OpenAI API for crop recommendations, disease detection, and weather insights.",
     tech: [
@@ -104,9 +104,9 @@ export const projectData = [
       "OpenAI API",
       "WebSockets",
     ],
-    liveUrl: null,
-    githubUrl: null,
-    featured: false,
+    liveUrl: "https://vk-smart-argo-ai-advisor.vercel.app/",
+    githubUrl: "https://github.com/VirabhadraKhobare/vk-smart-argo-ai-advisor",
+    featured: true,
     impact: ["Increased user engagement and decision accuracy by 45%"],
   },
   {
@@ -115,9 +115,9 @@ export const projectData = [
     description:
       "Built a full-stack automobile service platform enabling vehicle service booking, appointment management, and digital service history tracking.",
     tech: ["React.js", "Node.js", "Express.js", "MongoDB", "REST API"],
-    liveUrl: null,
-    githubUrl: null,
-    featured: false,
+    liveUrl: "https://automobile-service-platform.onrender.com/",
+    githubUrl: "https://github.com/VirabhadraKhobare/automobile-service-platform",
+    featured: true,
     impact: [
       "Reduced manual workflow by 55%",
       "Improved operational efficiency by 30%",
@@ -130,8 +130,9 @@ export const experienceData = [
     company: "Infynow Software Solutions LLP",
     role: "Full Stack Developer Intern",
     type: "Internship",
-    startDate: null,
-    endDate: null,
+    location: "On-site Internship (Offline)",
+    startDate: "Dec 2025",
+    endDate: "Jun 2026",
     summary:
       "Developed and deployed 5+ scalable MERN stack applications, handling database design, REST API development, React.js front-end, and cloud deployment. Built reusable React components and optimized backend services, improving performance and maintainability.",
     highlights: [
@@ -146,24 +147,27 @@ export const certificateData = [
   {
     title: "The Joy of Computing using Python",
     issuer: "NPTEL - IIT Madras",
-    issuedAt: null,
-    pdfUrl: null,
+    issuedAt: "Jan 2026 - Apr 2026",
+    pdfUrl:
+      "https://drive.google.com/file/d/1NBbwbSvk16Mj-bneuHolZjMdgI0qpafN/view",
     verificationUrl: null,
     notes: "12-week course — Score: 79% (Assignments: 24.88/25, Exam: 54/75)",
   },
   {
     title: "AWS Academy Graduate – Cloud Foundations Training",
     issuer: "Amazon Web Services",
-    issuedAt: null,
-    pdfUrl: null,
+    issuedAt: "Jan 2025 - Mar 2025",
+    pdfUrl:
+      "https://drive.google.com/file/d/1EbZGfTLSgEyiBlYNWfD5YaPzQNE62siJ/view",
     verificationUrl: null,
     notes: "Virtual Internship — 10-week course",
   },
   {
     title: "Cryptography and Network Security",
     issuer: "NPTEL - IIT Kharagpur",
-    issuedAt: null,
-    pdfUrl: null,
+    issuedAt: "Jan 2026 - Apr 2026",
+    pdfUrl:
+      "https://drive.google.com/file/d/1_RGOBJpx3V5aQdUC7cnJzSWMQuqD9Ke4/view",
     verificationUrl: null,
     notes: "12-week course — Score: 72% (Assignments: 24.06/25, Exam: 48/75)",
   },
@@ -180,14 +184,25 @@ export const servicesData = [
 export const educationData = [
   {
     label: "Bachelor of Technology (B.Tech), Computer Science and Engineering",
-    detail:
-      "DBATU University | Sharad Institute of Technology College of Engineering — CGPA: 8.75 (Aug 2022 - Jun 2026)",
+    institution: "Sharad Institute of Technology College of Engineering",
+    university: "DBATU University",
+    location: "Kolhapur, Maharashtra",
+    duration: "Aug 2022 - Jun 2026",
+    mode: "Full-time on-campus",
+    status: "Final year student",
+    gpa: "CGPA 8.75",
+    specialization: "Computer Science and Engineering",
+    highlights: [
+      "Strong foundation in full stack web development",
+      "Focused on practical MERN and AI-based projects",
+      "Built production-ready applications during coursework and internship work",
+    ],
   },
 ];
 
 export const achievementLinks = {
   github: "https://github.com/VirabhadraKhobare",
   leetcode: "https://leetcode.com/virabhadra07",
-  codeforces: null,
-  hackerrank: null,
+  codeforces: "https://codeforces.com/profile/virbhadrakhobare111",
+  hackerrank: "https://www.hackerrank.com/profile/virbhadra06",
 };

@@ -2,37 +2,58 @@ import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { Github, Code2, Trophy, TrendingUp } from "lucide-react";
 import { achievementLinks } from "../../data/portfolio.js";
+import { api } from "../../lib/api.js";
 import { GlassCard } from "../ui/GlassCard.jsx";
 import { SectionHeading } from "../ui/SectionHeading.jsx";
 
 export const AchievementsSection = () => {
-  const [githubSummary, setGithubSummary] = useState({
-    repos: 0,
-    followers: 0,
-    following: 0,
-    publicGists: 0,
+  const [summary, setSummary] = useState({
+    github: {
+      repos: 0,
+      followers: 0,
+      following: 0,
+      publicGists: 0,
+    },
+    leetcode: {
+      solved: 0,
+      ranking: null,
+    },
+    codeforces: {
+      rating: 0,
+      maxRating: 0,
+      rank: "unrated",
+    },
+    profileLinks: achievementLinks,
+    lastUpdated: null,
   });
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const load = async () => {
       try {
-        const response = await fetch(
-          "https://api.github.com/users/VirbhadraKhobare",
-        );
-        const data = await response.json();
-        setGithubSummary({
-          repos: data.public_repos || 0,
-          followers: data.followers || 0,
-          following: data.following || 0,
-          publicGists: data.public_gists || 0,
-        });
+        const response = await api.get("/achievements/summary");
+        setSummary(response.data);
       } catch (_error) {
-        setGithubSummary({
-          repos: 18,
-          followers: 42,
-          following: 19,
-          publicGists: 3,
-        });
+        setSummary((currentSummary) => ({
+          ...currentSummary,
+          github: {
+            repos: 18,
+            followers: 42,
+            following: 19,
+            publicGists: 3,
+          },
+          leetcode: {
+            solved: 120,
+            ranking: null,
+          },
+          codeforces: {
+            rating: 1500,
+            maxRating: 1500,
+            rank: "specialist",
+          },
+        }));
+      } finally {
+        setLoading(false);
       }
     };
 
@@ -40,11 +61,29 @@ export const AchievementsSection = () => {
   }, []);
 
   const stats = [
-    { label: "GitHub repos", value: githubSummary.repos, icon: Github },
-    { label: "Followers", value: githubSummary.followers, icon: TrendingUp },
-    { label: "LeetCode streak", value: "120+", icon: Trophy },
-    { label: "Codeforces rating", value: "1500+", icon: Code2 },
+    {
+      label: "GitHub repos",
+      value: loading ? "—" : summary.github.repos,
+      icon: Github,
+    },
+    {
+      label: "Followers",
+      value: loading ? "—" : summary.github.followers,
+      icon: TrendingUp,
+    },
+    {
+      label: "LeetCode solved",
+      value: loading ? "—" : summary.leetcode.solved,
+      icon: Trophy,
+    },
+    {
+      label: "Codeforces rating",
+      value: loading ? "—" : summary.codeforces.rating,
+      icon: Code2,
+    },
   ];
+
+  const profileLinks = summary.profileLinks || achievementLinks;
 
   return (
     <section id="achievements" className="section-shell py-20 md:py-28">
@@ -52,8 +91,19 @@ export const AchievementsSection = () => {
         <SectionHeading
           eyebrow="Achievements"
           title="Stats that recruiters can scan instantly"
-          description="GitHub, LeetCode, and Codeforces placements are shown as crisp animated counters with profile links."
+          description="Live platform stats are served through a secure backend proxy and refreshed automatically."
         />
+
+        <div className="mt-5 flex flex-wrap items-center gap-3 text-xs font-semibold uppercase tracking-[0.22em] text-[var(--muted)]">
+          <span className="control-surface rounded-full px-3 py-1 text-[0.68rem] tracking-[0.22em] text-[var(--primary)]">
+            Live sync
+          </span>
+          {summary.lastUpdated ? (
+            <span>
+              Updated {new Date(summary.lastUpdated).toLocaleString()}
+            </span>
+          ) : null}
+        </div>
 
         <div className="mt-12 grid gap-6 md:grid-cols-2 xl:grid-cols-4">
           {stats.map((stat, index) => (
@@ -75,19 +125,19 @@ export const AchievementsSection = () => {
 
         <div className="mt-8 flex flex-wrap gap-3">
           <a
-            href={achievementLinks.github}
+            href={profileLinks.github}
             className="control-surface rounded-full px-4 py-2 text-sm font-semibold transition focus-ring"
           >
             GitHub Profile
           </a>
           <a
-            href={achievementLinks.leetcode}
+            href={profileLinks.leetcode}
             className="control-surface rounded-full px-4 py-2 text-sm font-semibold transition focus-ring"
           >
             LeetCode Profile
           </a>
           <a
-            href={achievementLinks.codeforces}
+            href={profileLinks.codeforces}
             className="control-surface rounded-full px-4 py-2 text-sm font-semibold transition focus-ring"
           >
             Codeforces Profile

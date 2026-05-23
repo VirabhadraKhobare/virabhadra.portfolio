@@ -36,12 +36,12 @@ export const AboutSection = () => (
             {counters.map((counter) => (
               <div
                 key={counter.label}
-                className="rounded-2xl border border-[var(--border)] bg-white/5 p-4"
+                className="rounded-2xl border border-[var(--border)] bg-white/5 p-3 sm:p-4"
               >
-                <p className="text-2xl font-black text-[var(--text)]">
+                <p className="text-3xl font-black tracking-tight text-[var(--text)] sm:text-4xl">
                   {counter.value}
                 </p>
-                <p className="mt-1 text-xs uppercase tracking-[0.2em] text-[var(--muted)]">
+                <p className="mt-1 text-[0.68rem] uppercase tracking-[0.22em] text-[var(--muted)] sm:text-xs">
                   {counter.label}
                 </p>
               </div>
@@ -59,15 +59,71 @@ export const AboutSection = () => (
               transition={{ delay: index * 0.08, duration: 0.5 }}
             >
               <GlassCard className="h-full">
-                <p className="text-xs font-bold uppercase tracking-[0.28em] text-[var(--primary)]">
-                  Education
-                </p>
-                <h3 className="mt-3 font-display text-xl font-bold">
-                  {entry.label}
-                </h3>
-                <p className="mt-2 text-sm leading-7 text-[var(--muted)]">
-                  {entry.detail}
-                </p>
+                <div className="flex flex-col gap-4">
+                  <div className="flex flex-wrap items-center gap-3">
+                    <p className="text-xs font-bold uppercase tracking-[0.28em] text-[var(--primary)]">
+                      Education
+                    </p>
+                    <span className="rounded-full border border-[var(--border)] bg-[var(--panel)] px-3 py-1 text-[0.65rem] font-bold uppercase tracking-[0.22em] text-[var(--text-soft)]">
+                      {entry.status}
+                    </span>
+                  </div>
+
+                  <div>
+                    <h3 className="font-display text-xl font-bold leading-snug sm:text-2xl">
+                      {entry.label}
+                    </h3>
+                    <p className="mt-2 text-sm leading-7 text-[var(--muted)]">
+                      {entry.institution} · {entry.university}
+                    </p>
+                  </div>
+
+                  <div className="grid gap-3 sm:grid-cols-2">
+                    <div className="rounded-2xl border border-[var(--border)] bg-white/5 p-4">
+                      <p className="text-[0.65rem] font-bold uppercase tracking-[0.22em] text-[var(--muted)]">
+                        Duration
+                      </p>
+                      <p className="mt-1 text-sm font-semibold text-[var(--text)]">
+                        {entry.duration}
+                      </p>
+                    </div>
+                    <div className="rounded-2xl border border-[var(--border)] bg-white/5 p-4">
+                      <p className="text-[0.65rem] font-bold uppercase tracking-[0.22em] text-[var(--muted)]">
+                        Grade
+                      </p>
+                      <p className="mt-1 text-sm font-semibold text-[var(--text)]">
+                        {entry.gpa}
+                      </p>
+                    </div>
+                  </div>
+
+                  <div className="flex flex-wrap gap-2">
+                    {[entry.location, entry.mode, entry.specialization].map(
+                      (item) => (
+                        <span
+                          key={item}
+                          className="control-surface rounded-full px-3 py-1 text-[0.72rem] font-semibold"
+                        >
+                          {item}
+                        </span>
+                      ),
+                    )}
+                  </div>
+
+                  <div className="grid gap-2 rounded-2xl border border-[var(--border)] bg-[var(--panel)] p-4">
+                    <p className="text-[0.65rem] font-bold uppercase tracking-[0.24em] text-[var(--primary)]">
+                      Focus Areas
+                    </p>
+                    <ul className="space-y-2 text-sm leading-6 text-[var(--muted)]">
+                      {entry.highlights.map((highlight) => (
+                        <li key={highlight} className="flex items-start gap-2">
+                          <span className="mt-2 h-1.5 w-1.5 rounded-full bg-[var(--primary)]" />
+                          <span>{highlight}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </div>
               </GlassCard>
             </motion.div>
           ))}

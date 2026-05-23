@@ -5,8 +5,21 @@ import { connectDatabase } from "./config/db.js";
 const bootstrap = async () => {
   await connectDatabase();
   const port = Number(process.env.PORT) || 5000;
-  app.listen(port, () => {
+
+  const server = app.listen(port, () => {
     console.log(`API server running on ${port}`);
+  });
+
+  server.on("error", (error) => {
+    if (error.code === "EADDRINUSE") {
+      console.error(
+        `Port ${port} is already in use. Stop the existing server process or set a different PORT in backend/.env.`,
+      );
+      process.exit(1);
+    }
+
+    console.error("Failed to start API server", error);
+    process.exit(1);
   });
 };
 

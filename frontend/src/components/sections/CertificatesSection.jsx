@@ -6,6 +6,22 @@ import { GlassCard } from "../ui/GlassCard.jsx";
 import { SectionHeading } from "../ui/SectionHeading.jsx";
 import { Modal } from "../ui/Modal.jsx";
 
+const getCertificatePreviewUrl = (certificate) => {
+  if (certificate.thumbnailUrl) {
+    return certificate.thumbnailUrl;
+  }
+
+  const driveMatch = certificate.pdfUrl?.match(/\/d\/([^/]+)|[?&]id=([^&]+)/);
+  const fileId = driveMatch?.[1] || driveMatch?.[2];
+
+  return fileId
+    ? `https://drive.google.com/thumbnail?id=${fileId}&sz=w1200`
+    : null;
+};
+
+const getCertificateVerificationUrl = (certificate) =>
+  certificate.verificationUrl || certificate.pdfUrl || null;
+
 export const CertificatesSection = () => {
   const [selectedCertificate, setSelectedCertificate] = useState(null);
 
@@ -28,11 +44,27 @@ export const CertificatesSection = () => {
               transition={{ delay: index * 0.08 }}
             >
               <GlassCard className="overflow-hidden p-0">
-                <img
-                  src={certificate.thumbnailUrl}
-                  alt={certificate.title}
-                  className="h-52 w-full object-cover"
-                />
+                {getCertificatePreviewUrl(certificate) ? (
+                  <img
+                    src={getCertificatePreviewUrl(certificate)}
+                    alt={certificate.title}
+                    loading="lazy"
+                    decoding="async"
+                    className="h-48 w-full object-cover object-top sm:h-52"
+                  />
+                ) : (
+                  <div className="flex h-48 w-full flex-col justify-end bg-[linear-gradient(135deg,color-mix(in_srgb,var(--primary)_22%,transparent),rgba(15,23,42,0.92))] p-6 sm:h-52">
+                    <p className="text-xs font-bold uppercase tracking-[0.3em] text-[var(--primary)]">
+                      Certificate Preview
+                    </p>
+                    <p className="mt-2 max-w-xs text-lg font-bold text-white">
+                      {certificate.title}
+                    </p>
+                    <p className="mt-1 text-sm text-white/75">
+                      {certificate.issuer}
+                    </p>
+                  </div>
+                )}
                 <div className="p-6">
                   <p className="text-xs font-bold uppercase tracking-[0.28em] text-[var(--primary)]">
                     {certificate.issuer}
@@ -71,26 +103,45 @@ export const CertificatesSection = () => {
         >
           {selectedCertificate ? (
             <div className="grid gap-5 lg:grid-cols-[0.9fr_1.1fr]">
-              <img
-                src={selectedCertificate.thumbnailUrl}
-                alt={selectedCertificate.title}
-                className="h-full min-h-64 w-full rounded-2xl object-cover"
-              />
+              {getCertificatePreviewUrl(selectedCertificate) ? (
+                <img
+                  src={getCertificatePreviewUrl(selectedCertificate)}
+                  alt={selectedCertificate.title}
+                  loading="lazy"
+                  decoding="async"
+                  className="h-full min-h-64 w-full rounded-2xl object-cover object-top"
+                />
+              ) : (
+                <div className="flex min-h-64 w-full flex-col justify-end rounded-2xl bg-[linear-gradient(135deg,color-mix(in_srgb,var(--primary)_22%,transparent),rgba(15,23,42,0.92))] p-6">
+                  <p className="text-xs font-bold uppercase tracking-[0.3em] text-[var(--primary)]">
+                    Certificate Preview
+                  </p>
+                  <p className="mt-2 text-2xl font-black text-white">
+                    {selectedCertificate.title}
+                  </p>
+                  <p className="mt-1 text-sm text-white/75">
+                    {selectedCertificate.issuer}
+                  </p>
+                </div>
+              )}
               <div>
                 <p className="flex items-center gap-2 text-sm font-semibold text-[var(--primary)]">
                   <ShieldCheck size={16} /> Verified credential showcase
                 </p>
                 <p className="mt-4 text-sm leading-7 text-[var(--muted)]">
-                  This modal is wired for previewing certificate PDFs, asset
-                  links, or cloud-hosted verification pages in a polished,
-                  recruiter-friendly format.
+                  This modal keeps the certificate preview clean and gives you a
+                  direct online link without leaving the page.
                 </p>
-                <a
-                  href={selectedCertificate.verificationUrl}
-                  className="control-surface mt-6 inline-flex rounded-full px-4 py-2 text-sm font-bold transition hover:scale-105 focus-ring"
-                >
-                  View verification
-                </a>
+                {getCertificateVerificationUrl(selectedCertificate) ? (
+                  <a
+                    href={getCertificateVerificationUrl(selectedCertificate)}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="control-surface mt-6 inline-flex rounded-full px-4 py-2 text-sm font-bold transition hover:scale-105 focus-ring"
+                  >
+                    View verification
+                  </a>
+                ) : null}
               </div>
             </div>
           ) : null}

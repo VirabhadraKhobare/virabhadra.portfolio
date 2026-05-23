@@ -138,7 +138,7 @@ export const HeroSection = () => {
                     <p className="text-[0.64rem] font-bold uppercase tracking-[0.36em] text-[var(--text-soft)]">
                       {stat.label}
                     </p>
-                    <p className="mt-2.5 text-[1.05rem] font-black leading-[1.08] tracking-tight text-[var(--text-strong)] sm:text-[1.1rem] lg:text-[1.15rem]">
+                    <p className="mt-2.5 text-[1.65rem] font-black leading-[1.08] tracking-tight text-[var(--text-strong)] sm:text-[2.05rem] lg:text-[1.55rem]">
                       {stat.value}
                     </p>
                   </div>

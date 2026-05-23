@@ -31,10 +31,11 @@ export const ExperienceSection = () => (
                     {experience.role}
                   </h3>
                   <p className="mt-1 text-sm text-[var(--muted)]">
-                    {experience.company} · {experience.location || "Remote"}
+                    {experience.company} ·{" "}
+                    {experience.location || "On-site Internship (Offline)"}
                   </p>
                 </div>
-                <p className="rounded-full border border-[var(--border)] px-4 py-2 text-xs font-bold uppercase tracking-[0.22em] text-[var(--muted)]">
+                <p className="rounded-full border border-[var(--border)] bg-[var(--panel)] px-4 py-2 text-xs font-bold uppercase tracking-[0.22em] text-[var(--primary)]">
                   {experience.startDate} - {experience.endDate}
                 </p>
               </div>

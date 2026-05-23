@@ -14,6 +14,7 @@ import dashboardRoutes from "./routes/dashboardRoutes.js";
 import experienceRoutes from "./routes/experienceRoutes.js";
 import healthRoutes from "./routes/healthRoutes.js";
 import analyticsRoutes from "./routes/analyticsRoutes.js";
+import achievementsRoutes from "./routes/achievementsRoutes.js";
 import projectRoutes from "./routes/projectRoutes.js";
 import skillRoutes from "./routes/skillRoutes.js";
 import testimonialRoutes from "./routes/testimonialRoutes.js";
@@ -56,6 +57,7 @@ app.use("/api/certificates", certificateRoutes);
 app.use("/api/testimonials", testimonialRoutes);
 app.use("/api/contact", contactRoutes);
 app.use("/api/analytics", analyticsRoutes);
+app.use("/api/achievements", achievementsRoutes);
 app.use("/api/dashboard", dashboardRoutes);
 
 app.get("/sitemap.xml", async (_request, response) => {
