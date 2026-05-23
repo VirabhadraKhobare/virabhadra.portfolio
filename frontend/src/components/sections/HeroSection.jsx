@@ -71,12 +71,12 @@ export const HeroSection = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7 }}
           >
-            <div className="inline-flex items-center gap-2 rounded-full border border-cyan-400/20 bg-cyan-400/10 px-4 py-2 text-xs font-bold uppercase tracking-[0.35em] text-cyan-200">
+            <div className="control-surface inline-flex items-center gap-2 rounded-full border-cyan-400/20 px-4 py-2 text-xs font-bold uppercase tracking-[0.35em] text-cyan-100">
               <Sparkles size={14} />
               Premium Portfolio 2026
             </div>
-            <h1 className="mt-6 max-w-4xl font-display text-4xl font-black tracking-tight sm:text-5xl md:text-5xl lg:text-6xl xl:text-[3rem]">
-              <span className="block text-[var(--text)]">
+            <h1 className="mt-6 max-w-4xl font-display text-4xl font-black tracking-tight sm:text-5xl md:text-4xl lg:text-6xl xl:text-[3rem]">
+              <span className="block text-[var(--text-strong)]">
                 Virbhadra Khobare
               </span>
               <span className="mt-2 block text-gradient">
@@ -84,7 +84,7 @@ export const HeroSection = () => {
                 <span className="animate-pulse text-cyan-300">|</span>
               </span>
             </h1>
-            <p className="mt-5 max-w-xl text-sm leading-7 text-[var(--muted)] sm:text-base md:text-lg md:leading-8">
+            <p className="mt-5 max-w-xl text-sm leading-7 text-[var(--text-soft)] sm:text-base md:text-lg md:leading-8">
               I build recruiter-ready digital products with premium UI, scalable
               backend systems, and AI-powered features that feel fast, modern,
               and production-ready.
@@ -98,7 +98,7 @@ export const HeroSection = () => {
             </MagneticButton>
             <MagneticButton
               href="#contact"
-              className="inline-flex w-full items-center justify-center gap-2 rounded-full border border-[var(--border)] bg-[var(--panel)] px-6 py-3 text-sm font-bold text-[var(--text)] transition hover:bg-white/10 sm:w-auto"
+              className="control-surface inline-flex w-full items-center justify-center gap-2 rounded-full px-6 py-3 text-sm font-bold transition sm:w-auto"
             >
               Hire Me
               <ArrowDown size={16} />
@@ -112,7 +112,7 @@ export const HeroSection = () => {
                 href={link.href}
                 target="_blank"
                 rel="noreferrer"
-                className="inline-flex items-center gap-2 rounded-full border border-[var(--border)] bg-[var(--panel)] px-4 py-2 text-sm text-[var(--text)] transition hover:-translate-y-0.5 hover:bg-white/10 focus-ring"
+                className="control-surface inline-flex items-center gap-2 rounded-full px-4 py-2 text-sm transition hover:-translate-y-0.5 focus-ring"
               >
                 {link.label === "GitHub" ? (
                   <Github size={16} />
@@ -135,10 +135,10 @@ export const HeroSection = () => {
                 <div className="absolute inset-x-0 top-0 h-[2px] bg-gradient-to-r from-cyan-400 via-blue-500 to-fuchsia-500 opacity-90" />
                 <div className="flex min-h-[96px] flex-col justify-between gap-2.5">
                   <div>
-                    <p className="text-[0.64rem] font-bold uppercase tracking-[0.36em] text-cyan-200/80">
+                    <p className="text-[0.64rem] font-bold uppercase tracking-[0.36em] text-[var(--text-soft)]">
                       {stat.label}
                     </p>
-                    <p className="mt-2.5 text-[1.05rem] font-black leading-[1.08] tracking-tight text-[var(--text)] sm:text-[1.1rem] lg:text-[1.15rem]">
+                    <p className="mt-2.5 text-[1.05rem] font-black leading-[1.08] tracking-tight text-[var(--text-strong)] sm:text-[1.1rem] lg:text-[1.15rem]">
                       {stat.value}
                     </p>
                   </div>

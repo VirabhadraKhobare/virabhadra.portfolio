@@ -14,7 +14,7 @@ export const MobileNav = () => {
         <a
           key={href}
           href={href}
-          className="inline-flex h-10 w-10 items-center justify-center rounded-full text-[var(--text)] transition hover:bg-white/10 focus-ring sm:h-11 sm:w-11"
+          className="control-surface inline-flex h-10 w-10 items-center justify-center rounded-full transition focus-ring sm:h-11 sm:w-11"
         >
           <Icon size={17} />
         </a>

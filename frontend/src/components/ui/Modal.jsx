@@ -11,7 +11,11 @@ export const Modal = ({ open, title, onClose, children }) => {
             <p className="text-sm font-semibold text-cyan-300">Preview</p>
             <h3 className="font-display text-2xl font-bold">{title}</h3>
           </div>
-          <button type="button" onClick={onClose} className="rounded-full border border-[var(--border)] px-4 py-2 text-sm font-semibold transition hover:bg-white/10 focus-ring">
+          <button
+            type="button"
+            onClick={onClose}
+            className="control-surface rounded-full px-4 py-2 text-sm font-semibold transition focus-ring"
+          >
             Close
           </button>
         </div>

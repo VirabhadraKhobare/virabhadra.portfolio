@@ -16,7 +16,7 @@ export const SectionHeading = ({
     transition={{ duration: 0.55 }}
   >
     {eyebrow ? (
-      <p className="text-xs font-bold uppercase tracking-[0.35em] text-cyan-300">
+      <p className="text-xs font-bold uppercase tracking-[0.35em] text-[var(--text-soft)]">
         {eyebrow}
       </p>
     ) : null}
@@ -24,7 +24,7 @@ export const SectionHeading = ({
       {title}
     </h2>
     {description ? (
-      <p className="mt-4 text-sm leading-7 text-[var(--muted)] md:text-base">
+      <p className="mt-4 text-sm leading-7 text-[var(--text-soft)] md:text-base">
         {description}
       </p>
     ) : null}
