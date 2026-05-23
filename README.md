@@ -28,79 +28,76 @@ npm install
 3. Seed the admin user:
 
 ```bash
+# virabhadra.portfolio
+
+Professional full‑stack portfolio for Virabhadra Khobare — React + Vite frontend with an Express + MongoDB API backend.
+
+Live demo
+
+- Frontend: https://virabhadra-portfolio-frontend.vercel.app/
+
+Tech stack
+
+- Frontend: React, Vite, Tailwind CSS, Framer Motion, React Router, Axios
+- Backend: Node.js, Express, MongoDB + Mongoose, JWT authentication, Nodemailer
+
+Quick start (local)
+
+1. Install dependencies:
+
+```bash
+npm install
+```
+
+2. Create environment files:
+
+- Copy `backend/.env.example` → `backend/.env` and fill values
+- Copy `frontend/.env.example` → `frontend/.env` and fill values
+
+3. Seed admin user (optional):
+
+```bash
+cd backend
 npm run seed
 ```
 
-4. Start both apps:
+4. Start both apps in development:
 
 ```bash
+# root
 npm run dev
 ```
 
-## Environment Variables
+Environment variables (high level)
 
-Backend variables:
+- Backend (set on Render / production): `MONGODB_URI`, `JWT_SECRET`, `CLIENT_URL` (set to your Vercel URL), `SERVER_URL`, `COOKIE_SECRET`, `ADMIN_EMAIL`, `ADMIN_PASSWORD`.
+- Optional: `GITHUB_TOKEN`, `LEETCODE_USERNAME`, `CODEFORCES_HANDLE`, `SMTP_*` for email delivery.
+- Frontend (set on Vercel): `VITE_API_URL` = `https://<your-render-service>.onrender.com/api`, `VITE_BACKEND_URL` = `https://<your-render-service>.onrender.com`.
 
-- `PORT` - API port
-- `CLIENT_URL` - Frontend origin for CORS and sitemap links
-- `MONGODB_URI` - MongoDB Atlas or local Mongo connection string
-- `JWT_SECRET` - Signing secret for admin authentication
-- `JWT_EXPIRES_IN` - JWT expiry, for example `7d`
-- `ADMIN_EMAIL` - Seeded admin login email
-- `ADMIN_PASSWORD` - Seeded admin login password
-- `SMTP_HOST`, `SMTP_PORT`, `SMTP_USER`, `SMTP_PASS`, `SMTP_FROM` - Optional email delivery
+Deployment
 
-Frontend variables:
+1. Frontend: deploy the `frontend` folder to Vercel (Framework: Vite).
+	- Build Command: `npm run build`
+	- Output Directory: `dist`
+	- Add Vercel env vars: `VITE_API_URL` and `VITE_BACKEND_URL`.
 
-- `VITE_API_URL` - API base URL, for example `http://localhost:5000/api`
+2. Backend: deploy the `backend` folder on Render as a Web Service.
+	- Build: `npm install`
+	- Start: `npm start`
+	- Use the included `render.yaml` as a blueprint, and set production env vars on Render.
 
-## Main Features
+Verification
 
-- Premium hero with typing effect, orbit animation, and glass UI
-- About, skills, projects, experience, certificates, achievements, services, blog, and contact sections
-- Light and dark themes with persistence
-- Multi-language toggle with persisted state
-- GitHub stats integration and AI portfolio chatbot
-- Backend blog, contact, analytics, and admin dashboard
-- JWT-secured admin access and MongoDB-backed CRUD models
+- Frontend: open https://virabhadra-portfolio-frontend.vercel.app/ (live demo)
+- API health: `https://<your-render-service>.onrender.com/api/health` should return `{ "status": "ok" }`
 
-## Deployment
+Notes
 
-### 1. Deploy Backend on Render
+- Keep all `SECRET` / `TOKEN` values private and set them only in the platform's environment settings (Render / Vercel). Do not commit real secrets to the repository.
+- If you want, share your Render service URL and I will add the exact `CLIENT_URL` and `VITE_API_URL` values into this README for convenience.
 
-1. Push this repository to GitHub.
-2. In Render, create a new Web Service from the repo.
-3. Render settings:
-	- Root Directory: `backend`
-	- Build Command: `npm install`
-	- Start Command: `npm start`
-4. Add backend environment variables in Render:
-	- `NODE_ENV=production`
-	- `PORT=5000` (Render also provides a port internally)
-	- `MONGODB_URI=<your_mongodb_atlas_connection_string>`
-	- `JWT_SECRET=<long_random_secret>`
-	- `JWT_EXPIRE=7d`
-	- `CLIENT_URL=https://<your-vercel-domain>`
-	- `SERVER_URL=https://<your-render-service>.onrender.com`
-	- `COOKIE_SECRET=<long_random_cookie_secret>`
-	- Optional stats values:
-	  - `GITHUB_USERNAME`, `GITHUB_TOKEN`
-	  - `LEETCODE_USERNAME`, `CODEFORCES_HANDLE`, `HACKERRANK_HANDLE`
-	  - `ACHIEVEMENTS_REFRESH_MS=43200000`
-	- Optional mail values:
-	  - `SMTP_HOST`, `SMTP_PORT`, `SMTP_USER`, `SMTP_PASS`, `SMTP_FROM`
-	- Admin seed/login values:
-	  - `ADMIN_EMAIL`, `ADMIN_PASSWORD`
-5. Deploy and verify:
-	- `https://<your-render-service>.onrender.com/api/health`
-
-Note: You can also use the included root-level `render.yaml` blueprint for faster setup.
-
-### 2. Deploy Frontend on Vercel
-
-1. In Vercel, import the same GitHub repository.
-2. Set project root to `frontend`.
-3. Build settings:
+---
+Updated: production frontend added and docs refined.
 	- Build Command: `npm run build`
 	- Output Directory: `dist`
 4. Add frontend environment variables in Vercel:
