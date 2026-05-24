@@ -1,6 +1,10 @@
 import axios from "axios";
 
-const backendUrl = import.meta.env.VITE_BACKEND_URL || "http://localhost:5000";
+const backendUrl =
+  import.meta.env.VITE_BACKEND_URL ||
+  (import.meta.env.DEV
+    ? "http://localhost:5000"
+    : "https://virabhadra-portfolio.onrender.com");
 const apiBaseUrl =
   import.meta.env.VITE_API_URL || `${backendUrl.replace(/\/$/, "")}/api`;
 

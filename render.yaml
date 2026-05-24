@@ -7,3 +7,8 @@ services:
     startCommand: npm start
     healthCheckPath: /api/health
     autoDeploy: true
+    envVars:
+      - key: CLIENT_URL
+        value: https://virabhadra-portfolio-frontend.vercel.app
+      - key: SERVER_URL
+        value: https://virabhadra-portfolio.onrender.com

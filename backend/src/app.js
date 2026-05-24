@@ -21,7 +21,13 @@ import testimonialRoutes from "./routes/testimonialRoutes.js";
 
 export const app = express();
 
-const allowedOrigins = (process.env.CLIENT_URL || "http://localhost:5173")
+const defaultClientOrigins = [
+  "http://localhost:5173",
+  "http://localhost:5174",
+  "https://virabhadra-portfolio-frontend.vercel.app",
+];
+
+const allowedOrigins = (process.env.CLIENT_URL || defaultClientOrigins.join(","))
   .split(",")
   .map((origin) => origin.trim())
   .filter(Boolean);
