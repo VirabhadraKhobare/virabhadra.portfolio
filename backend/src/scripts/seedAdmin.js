@@ -4,7 +4,7 @@ import { connectDatabase } from "../config/db.js";
 import { User } from "../models/User.js";
 
 const adminSeedEmail =
-  process.env.ADMIN_EMAIL || "admin@virabhadraportfolio.com";
+  process.env.ADMIN_EMAIL || "virabhadrakhobare111@gmail.com";
 const adminSeedPassword = process.env.ADMIN_PASSWORD || "Admin@12345";
 
 const seed = async () => {

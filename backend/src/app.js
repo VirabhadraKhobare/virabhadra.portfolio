@@ -29,9 +29,9 @@ const configuredOrigins = process.env.CLIENT_URL
   ? process.env.CLIENT_URL.split(",")
   : [];
 
-const allowedOrigins = [...new Set([...defaultClientOrigins, ...configuredOrigins])].filter(
-  Boolean,
-);
+const allowedOrigins = [
+  ...new Set([...defaultClientOrigins, ...configuredOrigins]),
+].filter(Boolean);
 
 const corsOrigin = (origin, callback) => {
   if (!origin || allowedOrigins.includes(origin)) {
@@ -73,7 +73,8 @@ app.use("/achievements", achievementsRoutes);
 
 app.get("/sitemap.xml", async (_request, response) => {
   const items = ["", "blog", "admin", "contact"];
-  const clientUrl = allowedOrigins[0] || "https://virabhadra-portfolio-frontend.vercel.app";
+  const clientUrl =
+    allowedOrigins[0] || "https://virabhadra-portfolio-frontend.vercel.app";
   const urls = items
     .map(
       (item) =>
@@ -88,7 +89,8 @@ app.get("/sitemap.xml", async (_request, response) => {
 });
 
 app.get("/robots.txt", (_request, response) => {
-  const clientUrl = allowedOrigins[0] || "https://virabhadra-portfolio-frontend.vercel.app";
+  const clientUrl =
+    allowedOrigins[0] || "https://virabhadra-portfolio-frontend.vercel.app";
   response
     .type("text/plain")
     .send(`User-agent: *\nAllow: /\nSitemap: ${clientUrl}/sitemap.xml`);
