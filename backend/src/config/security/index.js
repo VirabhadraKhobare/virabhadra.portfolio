@@ -31,7 +31,7 @@ const configuredOrigins = splitOrigins(process.env.CLIENT_URL).map(
 
 export const allowedOrigins = [
   ...new Set([...defaultClientOrigins, ...configuredOrigins].filter(Boolean)),
-);
+];
 
 export const securityConfig = {
   isProduction,
