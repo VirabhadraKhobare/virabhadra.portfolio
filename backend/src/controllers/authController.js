@@ -1,5 +1,5 @@
 import bcrypt from 'bcryptjs';
-import { normalizeEmail } from 'validator';
+import validator from 'validator';
 import { User } from '../models/User.js';
 import { asyncHandler } from '../utils/asyncHandler.js';
 import { HttpError } from '../utils/httpError.js';
@@ -9,7 +9,7 @@ import { clearLoginFailures, isLoginBlocked, registerLoginFailure } from '../mid
 import { clearCsrfCookie, issueCsrfToken } from '../middleware/security/csrf.js';
 
 const sanitizeEmail = (value) =>
-  normalizeEmail(String(value || '').trim()) ||
+  validator.normalizeEmail(String(value || '').trim()) ||
   String(value || '').trim().toLowerCase();
 
 const safeUser = (user) => ({

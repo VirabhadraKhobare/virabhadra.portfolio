@@ -1,4 +1,4 @@
-import { normalizeEmail } from "validator";
+import validator from "validator";
 import { HttpError } from "../utils/httpError.js";
 import { Message } from "../models/Message.js";
 import { asyncHandler } from "../utils/asyncHandler.js";
@@ -32,7 +32,7 @@ const buildEmailHtml = (message) => {
 
 export const createMessage = asyncHandler(async (request, response) => {
   const email =
-    normalizeEmail(String(request.body.email || '').trim()) ||
+    validator.normalizeEmail(String(request.body.email || '').trim()) ||
     String(request.body.email || '').trim().toLowerCase();
 
   const payload = {
