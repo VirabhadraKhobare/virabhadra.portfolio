@@ -1,9 +1,12 @@
 {
   "env": {
-    "VITE_BACKEND_URL": "https://virabhadra-portfolio.onrender.com",
-    "VITE_API_URL": "https://virabhadra-portfolio.onrender.com/api"
+    "VITE_API_URL": "/api"
   },
   "rewrites": [
+    {
+      "source": "/api/(.*)",
+      "destination": "https://virabhadra-portfolio.onrender.com/api/$1"
+    },
     {
       "source": "/(.*)",
       "destination": "/index.html"
