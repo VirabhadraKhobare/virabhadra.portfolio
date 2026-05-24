@@ -7,7 +7,14 @@ const messageSchema = new mongoose.Schema(
     subject: { type: String, required: true, trim: true },
     message: { type: String, required: true, trim: true },
     isRead: { type: Boolean, default: false },
-    source: { type: String, default: 'website' }
+    source: { type: String, default: 'website' },
+    emailStatus: {
+      type: String,
+      enum: ['pending', 'sent', 'failed'],
+      default: 'pending'
+    },
+    emailSentAt: { type: Date },
+    emailError: { type: String, default: null }
   },
   { timestamps: true }
 );

@@ -21,7 +21,7 @@ const transporter = hasSmtp
     })
   : null;
 
-export const sendMail = async ({ to, subject, html, text }) => {
+export const sendMail = async ({ to, subject, html, text, replyTo }) => {
   if (!transporter) {
     console.log("SMTP not configured. Email payload:", { to, subject, text });
     return { skipped: true };
@@ -33,5 +33,6 @@ export const sendMail = async ({ to, subject, html, text }) => {
     subject,
     html,
     text,
+    replyTo,
   });
 };
