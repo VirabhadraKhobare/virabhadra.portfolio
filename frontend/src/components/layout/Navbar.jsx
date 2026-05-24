@@ -53,11 +53,11 @@ export const Navbar = () => {
             </a>
           ))}
           <a
-            href="/Virabhadra_Khobare_FullStack_Resume.pdf"
+            href="https://drive.google.com/file/d/12Rm2otdjCkzTYd4hjQgb41ImEalK66AO/view?usp=sharing"
             target="_blank"
             rel="noopener noreferrer"
-            download
             className="control-surface inline-flex items-center gap-2 rounded-full px-4 py-2 text-sm font-semibold transition focus-ring"
+            aria-label="Open resume in Google Drive"
           >
             Resume
           </a>
@@ -112,19 +112,19 @@ export const Navbar = () => {
 
             <div className="mt-3 flex gap-3">
               <a
-                href="/Virabhadra_Khobare_FullStack_Resume.pdf"
-                target="_blank"
-                rel="noopener noreferrer"
-                download
-                onClick={() => setIsMenuOpen(false)}
-                className="control-surface flex-1 items-center justify-center rounded-full px-4 py-3 text-center text-sm font-semibold transition focus-ring"
-              >
-                Download Resume
-              </a>
+                  href="https://drive.google.com/file/d/12Rm2otdjCkzTYd4hjQgb41ImEalK66AO/view?usp=sharing"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={() => setIsMenuOpen(false)}
+                  className="control-surface flex-1 items-center justify-center rounded-full px-4 py-3 text-center text-sm font-semibold transition focus-ring"
+                  aria-label="Open resume in Google Drive"
+                >
+                  Download Resume
+                </a>
             </div>
 
             <div className="flex items-center gap-3 rounded-3xl border border-[var(--border)] bg-[var(--panel-strong)] p-3">
-                {/* Admin Login removed for public site */}
+              {/* Admin Login removed for public site */}
             </div>
           </div>
         </div>

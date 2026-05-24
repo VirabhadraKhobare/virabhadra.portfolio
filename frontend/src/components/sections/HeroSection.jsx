@@ -92,7 +92,13 @@ export const HeroSection = () => {
           </motion.div>
 
           <div className="mt-7 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center sm:gap-4">
-            <MagneticButton className="control-surface inline-flex w-full items-center justify-center gap-2 rounded-full px-6 py-3 text-sm font-bold transition sm:w-auto">
+            <MagneticButton
+              href="https://drive.google.com/file/d/12Rm2otdjCkzTYd4hjQgb41ImEalK66AO/view?usp=sharing"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="control-surface inline-flex w-full items-center justify-center gap-2 rounded-full px-6 py-3 text-sm font-bold transition sm:w-auto"
+              aria-label="Open resume in Google Drive"
+            >
               <Download size={16} />
               Download Resume
             </MagneticButton>
