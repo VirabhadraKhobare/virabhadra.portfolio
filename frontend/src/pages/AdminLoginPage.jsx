@@ -4,12 +4,17 @@ import { Helmet } from 'react-helmet-async';
 import toast from 'react-hot-toast';
 import { useAuth } from '../context/AuthContext.jsx';
 import { GlassCard } from '../components/ui/GlassCard.jsx';
+import { LoadingScreen } from '../components/layout/LoadingScreen.jsx';
 
 export default function AdminLoginPage() {
   const navigate = useNavigate();
-  const { login } = useAuth();
+  const { login, isReady } = useAuth();
   const [form, setForm] = useState({ email: '', password: '' });
   const [loading, setLoading] = useState(false);
+
+  if (!isReady) {
+    return <LoadingScreen />;
+  }
 
   const handleSubmit = async (event) => {
     event.preventDefault();

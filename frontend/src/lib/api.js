@@ -1,26 +1,29 @@
 import axios from "axios";
+import { getCsrfToken } from "../utils/security/csrf.js";
 
-const apiBaseUrl =
-  import.meta.env.VITE_API_URL ||
-  (import.meta.env.DEV
-    ? "https://virabhadra-portfolio-frontend.vercel.app"
-    : "/api");
-
-    // import.meta.env.DEV
-    // ? "http://localhost:5000/api"
-    // : "/api";
+const apiBaseUrl = import.meta.env.VITE_API_URL || "/api";
 
 export const api = axios.create({
   baseURL: apiBaseUrl,
   timeout: 15000,
+  withCredentials: true,
+  headers: {
+    "X-Requested-With": "XMLHttpRequest",
+  },
 });
 
 api.interceptors.request.use((config) => {
-  const token = localStorage.getItem("portfolio.token");
+  const method = (config.method || "get").toLowerCase();
 
-  if (token) {
-    config.headers.Authorization = `Bearer ${token}`;
+  if (["post", "put", "patch", "delete"].includes(method)) {
+    const csrfToken = getCsrfToken();
+
+    if (csrfToken) {
+      config.headers["X-CSRF-Token"] = csrfToken;
+    }
   }
+
+  config.withCredentials = true;
 
   return config;
 });
