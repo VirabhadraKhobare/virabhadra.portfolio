@@ -61,13 +61,7 @@ export const Navbar = () => {
           >
             Resume
           </a>
-          <NavLink
-            to="/admin/login"
-            className="control-surface inline-flex items-center gap-2 rounded-full px-4 py-2 text-sm font-semibold transition focus-ring"
-          >
-            <Sparkles size={16} />
-            Admin
-          </NavLink>
+          {/* Admin link removed for public site */}
         </nav>
 
         <div className="flex items-center gap-2">
@@ -130,14 +124,7 @@ export const Navbar = () => {
             </div>
 
             <div className="flex items-center gap-3 rounded-3xl border border-[var(--border)] bg-[var(--panel-strong)] p-3">
-              <NavLink
-                to="/admin/login"
-                onClick={() => setIsMenuOpen(false)}
-                className="inline-flex flex-1 items-center justify-center gap-2 rounded-full bg-gradient-to-r from-cyan-400 via-blue-500 to-fuchsia-500 px-4 py-3 text-sm font-semibold text-white shadow-glow transition hover:opacity-95 focus-ring"
-              >
-                <Sparkles size={16} />
-                Admin Login
-              </NavLink>
+                {/* Admin Login removed for public site */}
             </div>
           </div>
         </div>

@@ -1,28 +1,15 @@
 import { Suspense, lazy, useEffect } from "react";
-import { Navigate, Route, Routes, useLocation } from "react-router-dom";
+import { Route, Routes, useLocation } from "react-router-dom";
 import { SiteLayout } from "./components/layout/SiteLayout.jsx";
 import { LoadingScreen } from "./components/layout/LoadingScreen.jsx";
 import { CursorGlow } from "./components/layout/CursorGlow.jsx";
 import { useAuth } from "./context/AuthContext.jsx";
 
 const HomePage = lazy(() => import("./pages/HomePage.jsx"));
-const AdminLoginPage = lazy(() => import("./pages/AdminLoginPage.jsx"));
-const AdminDashboardPage = lazy(() => import("./pages/AdminDashboardPage.jsx"));
+// Admin pages removed for public site
 const NotFoundPage = lazy(() => import("./pages/NotFoundPage.jsx"));
 
-const ProtectedRoute = ({ children }) => {
-  const { isReady, isAuthenticated } = useAuth();
-
-  if (!isReady) {
-    return <LoadingScreen />;
-  }
-
-  if (!isAuthenticated) {
-    return <Navigate to="/admin/login" replace />;
-  }
-
-  return children;
-};
+// ProtectedRoute removed with admin pages
 
 const ScrollToTop = () => {
   const location = useLocation();
@@ -44,15 +31,7 @@ export default function App() {
           <Route element={<SiteLayout />}>
             <Route path="/" element={<HomePage />} />
           </Route>
-          <Route path="/admin/login" element={<AdminLoginPage />} />
-          <Route
-            path="/admin"
-            element={
-              <ProtectedRoute>
-                <AdminDashboardPage />
-              </ProtectedRoute>
-            }
-          />
+          {/* Admin routes removed for public site */}
           <Route path="*" element={<NotFoundPage />} />
         </Routes>
       </Suspense>
