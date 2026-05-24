@@ -43,7 +43,7 @@ export const ContactSection = () => {
               <div>
                 <p className="font-semibold">Email</p>
                 <p className="text-sm text-[var(--muted)]">
-                  virbhadra.khobare@example.com
+                  virbhadrakhobare111@gmail.com
                 </p>
               </div>
             </div>
@@ -52,7 +52,7 @@ export const ContactSection = () => {
               <div>
                 <p className="font-semibold">Location</p>
                 <p className="text-sm text-[var(--muted)]">
-                  Available remotely and open to relocation
+                  Kolhapur, Maharashtra
                 </p>
               </div>
             </div>
@@ -63,7 +63,7 @@ export const ContactSection = () => {
             </div>
             <iframe
               title="Google Maps"
-              src="https://www.google.com/maps?q=India&z=4&output=embed"
+              src="https://www.google.com/maps?q=Kolhapur%2C%20Maharashtra&z=12&output=embed"
               loading="lazy"
               className="h-64 w-full rounded-2xl border border-[var(--border)]"
             />
