@@ -90,8 +90,8 @@ export const AchievementsSection = () => {
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <SectionHeading
           eyebrow="Achievements"
-          title="Stats that recruiters can scan instantly"
-          description="Live platform stats are served through a secure backend proxy and refreshed automatically."
+          title="Key metrics and platform activity"
+          description="Live-synced platform statistics and coding profile highlights relevant to early-career evaluation."
         />
 
         <div className="mt-5 flex flex-wrap items-center gap-3 text-xs font-semibold uppercase tracking-[0.22em] text-[var(--muted)]">

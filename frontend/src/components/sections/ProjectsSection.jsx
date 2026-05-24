@@ -35,8 +35,8 @@ export const ProjectsSection = () => {
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <SectionHeading
           eyebrow="Projects"
-          title="Recruiter-friendly case studies with filtering and search"
-          description="Each project card highlights the outcome, stack, and direct action links to live demos and repositories."
+          title="Project case studies built during coursework and internships"
+          description="Each project card shows the problem, solution, tech stack, and links to live demos and source so recruiters can evaluate impact quickly."
         />
 
         <div className="mt-8 flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">

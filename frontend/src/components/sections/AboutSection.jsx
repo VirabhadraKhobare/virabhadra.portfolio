@@ -15,8 +15,8 @@ export const AboutSection = () => (
     <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
       <SectionHeading
         eyebrow="About"
-        title="Professional introduction with clarity and depth"
-        description="I craft polished digital products from idea to deployment, balancing interface quality, backend reliability, and AI-driven functionality."
+        title="Early-career Full Stack developer — projects & internships"
+        description="Practical, deployable projects built during my B.Tech — React frontends, Node.js APIs, and MongoDB-backed systems with introductory AI integrations."
       />
 
       <div className="mt-12 grid gap-6 lg:grid-cols-[0.95fr_1.05fr]">

@@ -30,8 +30,8 @@ export const CertificatesSection = () => {
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <SectionHeading
           eyebrow="Certificates"
-          title="Interactive gallery with PDF preview modal"
-          description="Hover states, preview actions, and soft glass cards create a premium credential display."
+          title="Verified certificates and course highlights"
+          description="PDF previews and credential links for completed courses and certifications relevant to early-career development."
         />
 
         <div className="mt-12 grid gap-6 md:grid-cols-2 xl:grid-cols-3">

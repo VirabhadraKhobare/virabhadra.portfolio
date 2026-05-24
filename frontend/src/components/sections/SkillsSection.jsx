@@ -24,8 +24,8 @@ export const SkillsSection = () => (
     <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
       <SectionHeading
         eyebrow="Skills"
-        title="Balanced across frontend, backend, data, and AI"
-        description="The stack is grouped for recruiter clarity and technical depth, with animated bars and circular indicators for easy scanning."
+        title="Core skills across frontend, backend, and AI"
+        description="Organized skill groups highlight technologies used in projects, with progress indicators for quick recruiter review."
       />
 
       <div className="mt-12 grid gap-6 lg:grid-cols-[1.05fr_0.95fr]">

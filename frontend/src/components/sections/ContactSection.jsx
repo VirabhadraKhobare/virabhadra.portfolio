@@ -32,8 +32,8 @@ export const ContactSection = () => {
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <SectionHeading
           eyebrow="Contact"
-          title="Working form with MongoDB storage and email API"
-          description="Every submission is validated, stored, and mailed through the backend contact pipeline."
+          title="Contact & collaboration"
+          description="Working contact form stores messages in MongoDB and sends notifications; open to internships, freelance, and entry-level roles."
         />
 
         <div className="mt-12 grid gap-6 lg:grid-cols-[0.9fr_1.1fr]">

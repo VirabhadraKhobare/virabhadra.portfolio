@@ -8,8 +8,8 @@ export const ExperienceSection = () => (
     <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
       <SectionHeading
         eyebrow="Experience"
-        title="Timeline-focused internship and project history"
-        description="Expandable details keep the layout clean while still surfacing the important delivery context."
+        title="Internships and project delivery timeline"
+        description="Internship roles and project contributions with concise outcomes and responsibilities for hiring review."
       />
 
       <div className="mt-12 grid gap-6">

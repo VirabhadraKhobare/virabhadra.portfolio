@@ -8,8 +8,8 @@ export const ServicesSection = () => (
     <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
       <SectionHeading
         eyebrow="Services"
-        title="Engagement options built for startups and clients"
-        description="Clear service positioning helps recruiters and customers identify the fit immediately."
+        title="Available engagement options for startups and teams"
+        description="Offerings tailored for small teams and early-stage products: full-stack development, APIs, and deployment."
       />
 
       <div className="mt-12 grid gap-6 md:grid-cols-2 xl:grid-cols-3">
