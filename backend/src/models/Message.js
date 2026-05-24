@@ -1,4 +1,4 @@
-import mongoose from 'mongoose';
+import mongoose from "mongoose";
 
 const messageSchema = new mongoose.Schema(
   {
@@ -7,16 +7,16 @@ const messageSchema = new mongoose.Schema(
     subject: { type: String, required: true, trim: true },
     message: { type: String, required: true, trim: true },
     isRead: { type: Boolean, default: false },
-    source: { type: String, default: 'website' },
+    source: { type: String, default: "website" },
     emailStatus: {
       type: String,
-      enum: ['pending', 'sent', 'failed'],
-      default: 'pending'
+      enum: ["pending", "sent", "failed"],
+      default: "pending",
     },
     emailSentAt: { type: Date },
-    emailError: { type: String, default: null }
+    emailError: { type: String, default: null },
   },
-  { timestamps: true }
+  { timestamps: true },
 );
 
-export const Message = mongoose.model('Message', messageSchema);
+export const Message = mongoose.model("Message", messageSchema);
