@@ -1,10 +1,9 @@
 import axios from "axios";
 
 const apiBaseUrl =
-  import.meta.env.VITE_API_URL ||
-  (import.meta.env.DEV
-    ? "https://virabhadra-portfolio-frontend.vercel.appapi"
-    : "/api");
+  import.meta.env.DEV
+    ? "http://localhost:5000/api"
+    : "/api";
 
 export const api = axios.create({
   baseURL: apiBaseUrl,
