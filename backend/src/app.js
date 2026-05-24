@@ -22,15 +22,16 @@ import testimonialRoutes from "./routes/testimonialRoutes.js";
 export const app = express();
 
 const defaultClientOrigins = [
-  "http://localhost:5173",
-  "http://localhost:5174",
   "https://virabhadra-portfolio-frontend.vercel.app",
 ];
 
-const allowedOrigins = (process.env.CLIENT_URL || defaultClientOrigins.join(","))
-  .split(",")
-  .map((origin) => origin.trim())
-  .filter(Boolean);
+const configuredOrigins = process.env.CLIENT_URL
+  ? process.env.CLIENT_URL.split(",")
+  : [];
+
+const allowedOrigins = [...new Set([...defaultClientOrigins, ...configuredOrigins])].filter(
+  Boolean,
+);
 
 const corsOrigin = (origin, callback) => {
   if (!origin || allowedOrigins.includes(origin)) {
@@ -65,6 +66,10 @@ app.use("/api/contact", contactRoutes);
 app.use("/api/analytics", analyticsRoutes);
 app.use("/api/achievements", achievementsRoutes);
 app.use("/api/dashboard", dashboardRoutes);
+
+app.use("/contact", contactRoutes);
+app.use("/analytics", analyticsRoutes);
+app.use("/achievements", achievementsRoutes);
 
 app.get("/sitemap.xml", async (_request, response) => {
   const items = ["", "blog", "admin", "contact"];
