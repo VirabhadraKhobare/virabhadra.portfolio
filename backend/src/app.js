@@ -68,7 +68,7 @@ app.use("/api/dashboard", dashboardRoutes);
 
 app.get("/sitemap.xml", async (_request, response) => {
   const items = ["", "blog", "admin", "contact"];
-  const clientUrl = allowedOrigins[0] || "http://localhost:5173";
+  const clientUrl = allowedOrigins[0] || "https://virabhadra-portfolio-frontend.vercel.app";
   const urls = items
     .map(
       (item) =>
@@ -83,7 +83,7 @@ app.get("/sitemap.xml", async (_request, response) => {
 });
 
 app.get("/robots.txt", (_request, response) => {
-  const clientUrl = allowedOrigins[0] || "http://localhost:5173";
+  const clientUrl = allowedOrigins[0] || "https://virabhadra-portfolio-frontend.vercel.app";
   response
     .type("text/plain")
     .send(`User-agent: *\nAllow: /\nSitemap: ${clientUrl}/sitemap.xml`);
