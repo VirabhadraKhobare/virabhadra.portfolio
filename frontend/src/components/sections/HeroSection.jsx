@@ -71,9 +71,14 @@ export const HeroSection = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7 }}
           >
-            <div className="control-surface inline-flex items-center gap-2 rounded-full px-4 py-2 text-xs font-bold uppercase tracking-[0.35em] text-white">
+            <div className="control-surface inline-flex items-center gap-3 rounded-full px-4 py-2 text-xs font-bold uppercase tracking-[0.35em] text-white">
               <Sparkles size={14} />
-              Premium Portfolio 2026
+              <div className="flex flex-col leading-tight">
+                <span className="block">Premium Portfolio 2026</span>
+                <span className="mt-0.5 block text-[10px] font-semibold uppercase tracking-[0.28em] text-white/80">
+                  Early-career • Internship-ready
+                </span>
+              </div>
             </div>
             <h1 className="mt-6 max-w-4xl font-display text-4xl font-black tracking-tight sm:text-5xl md:text-4xl lg:text-6xl xl:text-[3rem]">
               <span className="block text-[var(--text-strong)]">
