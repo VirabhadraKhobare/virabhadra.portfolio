@@ -1,4 +1,4 @@
-import validator from "validator";
+import { body } from "express-validator";
 import { HttpError } from "../utils/httpError.js";
 import { Message } from "../models/Message.js";
 import { asyncHandler } from "../utils/asyncHandler.js";
@@ -30,14 +30,23 @@ const buildEmailHtml = (message) => {
   `;
 };
 
-export const createMessage = asyncHandler(async (request, response) => {
-  const email =
-    validator.normalizeEmail(String(request.body.email || '').trim()) ||
-    String(request.body.email || '').trim().toLowerCase();
+export const contactValidators = [
+  body("name").trim().isLength({ min: 2 }).withMessage("Name is required"),
+  body("email").trim().isEmail().withMessage("Valid email is required"),
+  body("subject")
+    .trim()
+    .isLength({ min: 3 })
+    .withMessage("Subject is required"),
+  body("message")
+    .trim()
+    .isLength({ min: 10 })
+    .withMessage("Message should be at least 10 characters"),
+];
 
+export const createMessage = asyncHandler(async (request, response) => {
   const payload = {
     name: request.body.name.trim(),
-    email,
+    email: request.body.email.trim().toLowerCase(),
     subject: request.body.subject.trim(),
     message: request.body.message.trim(),
     source: request.body.source?.trim() || "website",

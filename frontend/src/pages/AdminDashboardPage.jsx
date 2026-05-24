@@ -102,8 +102,8 @@ export default function AdminDashboardPage() {
     load();
   }, []);
 
-  const handleLogout = async () => {
-    await logout();
+  const handleLogout = () => {
+    logout();
     navigate("/admin/login");
   };
 

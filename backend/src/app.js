@@ -3,16 +3,9 @@ import cors from "cors";
 import helmet from "helmet";
 import compression from "compression";
 import morgan from "morgan";
-import cookieParser from "cookie-parser";
-import mongoSanitize from "express-mongo-sanitize";
-import hpp from "hpp";
-import xssClean from "xss-clean";
-import crypto from "node:crypto";
 import "./config/loadEnv.js";
-import { allowedOrigins, corsOptions, securityConfig } from "./config/security/index.js";
 import { notFoundHandler, errorHandler } from "./middleware/error.js";
 import { rateLimiter } from "./middleware/rateLimiter.js";
-import { csrfProtection } from "./middleware/security/csrf.js";
 import authRoutes from "./routes/authRoutes.js";
 import blogRoutes from "./routes/blogRoutes.js";
 import certificateRoutes from "./routes/certificateRoutes.js";
@@ -27,41 +20,39 @@ import skillRoutes from "./routes/skillRoutes.js";
 import testimonialRoutes from "./routes/testimonialRoutes.js";
 
 export const app = express();
-app.disable("x-powered-by");
-app.set("trust proxy", 1);
 
-app.use((request, response, next) => {
-  request.requestId = crypto.randomUUID();
-  response.setHeader("X-Request-Id", request.requestId);
-  next();
-});
+const defaultClientOrigins = [
+  "https://virabhadra-portfolio-frontend.vercel.app",
+];
 
-app.use(cors(corsOptions));
+const configuredOrigins = process.env.CLIENT_URL
+  ? process.env.CLIENT_URL.split(",")
+  : [];
+
+const allowedOrigins = [
+  ...new Set([...defaultClientOrigins, ...configuredOrigins]),
+].filter(Boolean);
+
+const corsOrigin = (origin, callback) => {
+  if (!origin || allowedOrigins.includes(origin)) {
+    return callback(null, true);
+  }
+
+  return callback(new Error("Not allowed by CORS"));
+};
+
 app.use(
-  helmet({
-    contentSecurityPolicy: false,
-    crossOriginEmbedderPolicy: false,
+  cors({
+    origin: corsOrigin,
+    credentials: true,
   }),
 );
+app.use(helmet());
 app.use(compression());
-app.use(cookieParser(process.env.COOKIE_SECRET || undefined));
-app.use(express.json({ limit: securityConfig.requestBodyLimit }));
-app.use(express.urlencoded({ extended: false, limit: securityConfig.requestBodyLimit, parameterLimit: 20 }));
-app.use(mongoSanitize());
-app.use(xssClean());
-app.use(hpp());
-
-morgan.token("id", (request) => request.requestId || "-");
-app.use(
-  morgan(
-    process.env.NODE_ENV === "production"
-      ? ":remote-addr :method :url :status :res[content-length] - :response-time ms req=:id"
-      : "dev",
-  ),
-);
-
+app.use(express.json({ limit: "1mb" }));
+app.use(express.urlencoded({ extended: true }));
+app.use(morgan("dev"));
 app.use(rateLimiter);
-app.use(csrfProtection);
 
 app.use("/api/health", healthRoutes);
 app.use("/api/auth", authRoutes);
