@@ -27,13 +27,13 @@ export const Footer = () => {
         <div className="mt-10 flex flex-col gap-4 border-t border-[var(--border)] pt-6 text-sm text-[var(--muted)] sm:flex-row sm:items-center sm:justify-between">
           <p>© 2026 Virbhadra Khobare. Built with React, Node.js, MongoDB, and design intent.</p>
           <div className="flex items-center gap-4">
-            <a href="https://github.com/VirbhadraKhobare" className="transition hover:text-[var(--text)] focus-ring" aria-label="GitHub">
+            <a href="https://github.com/VirabhadraKhobare" target="_blank" rel="noreferrer" className="transition hover:text-[var(--text)] focus-ring" aria-label="GitHub">
               <Github size={18} />
             </a>
-            <a href="https://linkedin.com/virabhadrakhobare" className="transition hover:text-[var(--text)] focus-ring" aria-label="LinkedIn">
+            <a href="https://www.linkedin.com/in/virabhadrakhobare/" target="_blank" rel="noreferrer" className="transition hover:text-[var(--text)] focus-ring" aria-label="LinkedIn">
               <Linkedin size={18} />
             </a>
-            <a href="mailto:virbhadrakhobare111@gmail.com" className="transition hover:text-[var(--text)] focus-ring" aria-label="Email">
+            <a href="mailto:virbhadrakhobare111@gmail.com" target="_blank" rel="noreferrer" className="transition hover:text-[var(--text)] focus-ring" aria-label="Email">
               <Mail size={18} />
             </a>
           </div>
